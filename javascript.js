@@ -1,22 +1,30 @@
 $( document ).ready(function() {
-    var appID = "94bd8525986db57aa34cbcb264fb52c9";
+    let appID = "94bd8525986db57aa34cbcb264fb52c9";
 
     $(".query_btn").click(function(){
 
         var query_param = $(this).prev().val();
 
         if ($(this).prev().attr("placeholder") == "City") {
-            var weather = "http://api.openweathermap.org/data/2.5/weather?q=" + query_param + "&APPID=" + appID;
+            var weather = "http://api.openweathermap.org/data/2.5/weather?q=" + query_param + "&units=imperial&APPID=" + appID;
+            var forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + query_param + "&units=imperial&APPID=" + appID;
         }
 
         $.getJSON(weather,function(json){
+            console.log(json);
             $("#city").html(json.name);
-            $("#main_weather").html(json.weather[0].main);
-            $("#description_weather").html(json.weather[0].description);
             $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
-            $("#temperature").html(json.main.temp);
-            $("#pressure").html(json.main.pressure);
-            $("#humidity").html(json.main.humidity);
+            $("#temperature").html(json.main.temp + "&#176F");
+            $("#humidity").html(json.main.humidity + "%");
+            $("#wind_speed").html(json.wind.speed + " MPH");
+        });
+        $.getJSON(forecast,function(json){
+            console.log(json);
+            //for (i = 0; i < 41; i + 8) {
+                $(".weather_image").attr("src", "http://openweathermap.org/img/w/" + json.list[0].weather[0].icon + ".png");
+                $(".temperature").html(json.list[0].main.temp + "&#176F");
+                $(".humidity").html(json.list[0].main.humidity + "%");
+            //}
         });
     })
 

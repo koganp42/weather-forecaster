@@ -24,6 +24,7 @@
     />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://unpkg.com/moment"></script>
+    <script src="javascript.js"></script>
 
     <title>5 Day Weather Forecast</title>
 </head>
@@ -41,55 +42,57 @@
                 <input type="text" placeholder="City"><button type="button" class="query_btn btn btn-default btn-sm">Search</button><br>
             </div>
         
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <div class="row col-12">
-                    <h2>City: <span id="city"></span></h2>
-                    <br />
-                    <h2>Main Weather: <span id="main_weather"></span></h2>
-                    <br />
-                    <h2>Description: <span id="description_weather"></span></h2>
+            <div class="col-lg-8 col-lg-offset-2 text-left">
+                <div class="container">
+                    <h3>City: <span id="city"></span></h3>
                     <br />
                     <img id="weather_image" src="">
                     <br />
-                    <h2>Temperature: <span id="temperature"></span></h2>
+                    <h4>Temperature: <span id="temperature"></span></h4>
                     <br />
-                    <h2>Humidity: <span id="humidity"></span></h2>
+                    <h4>Humidity: <span id="humidity"></span></h4>
+                    <br />
+                    <h4>Wind Speed: <span id="wind_speed"></span></h4>
                 </div>
                 <br />
+                <h2>5 Day Forecast</h2>
                 <div class="row col-12">
-                    <h2>5 Day Forecast</h2>
-                    <br />
                     <div class="card" id="dayOneForecastDisplay">
-                        <div class="card-body">
+                        <div class="card-body bg-primary text-white">
                             <h5 class="card-title forecastDate">Date Display</h5>
+                            <img class="weather_image" src="">
                             <p class="temperature">Temperature</p>
                             <p class="humidity">Humidity</p>
                         </div>
                     </div>
                     <div class="card" id="dayTwoForecastDisplay">
-                        <div class="card-body">
+                        <div class="card-body bg-primary text-white">
                             <h5 class="card-title forecastDate">Date Display</h5>
+                            <img class="weather_image" src="">
                             <p class="temperature">Temperature</p>
                             <p class="humidity">Humidity</p>
                         </div>
                     </div>
                     <div class="card" id="dayThreeForecastDisplay">
-                        <div class="card-body">
+                        <div class="card-body bg-primary text-white">
                             <h5 class="card-title forecastDate">Date Display</h5>
+                            <img class="weather_image" src="">
                             <p class="temperature">Temperature</p>
                             <p class="humidity">Humidity</p>
                         </div>
                     </div>
                     <div class="card" id="dayFourForecastDisplay">
-                        <div class="card-body">
+                        <div class="card-body bg-primary text-white">
                             <h5 class="card-title forecastDate">Date Display</h5>
+                            <img class="weather_image" src="">
                             <p class="temperature">Temperature</p>
                             <p class="humidity">Humidity</p>
                         </div>
                     </div>
                     <div class="card" id="dayFiveForecastDisplay">
-                        <div class="card-body">
+                        <div class="card-body bg-primary text-white">
                             <h5 class="card-title forecastDate">Date Display</h5>
+                            <img class="weather_image" src="">
                             <p class="temperature">Temperature</p>
                             <p class="humidity">Humidity</p>
                         </div>
