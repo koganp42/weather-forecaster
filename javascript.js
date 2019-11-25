@@ -1,12 +1,31 @@
 $( document ).ready(function() {
+    //saving my api key to a variable
     let appID = "94bd8525986db57aa34cbcb264fb52c9";
 
+    //creating a function that will create a button li for each object in the stored array.
 
+    function searchHistoryButtonCreator(){
+        let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistoryArray"));
+        debugger;
+        for(i = 0; i < searchHistoryArray.length; i++){
+            let searchLi = $("<li>");
+            let liButton = $("<button>");
+            liButton.addClass("query_btn btn btn-white btn-sm");
+            liButton.attr("type", "button");
+            liButton.text(searchHistoryArray[i].query_param.city);
+            searchLi.html(liButton);
+            $("#searchHistoryList").prepend(searchLi);
+        }
+    }
 
+    // //calling the function above.
+    searchHistoryButtonCreator();
+    
+    
     $(".query_btn").click(function(){
         event.preventDefault();
-        var query_param = $(this).prev().val();
-
+        
+        let query_param = $(this).prev().val();
         if ($(this).prev().attr("placeholder") == "City") {
             var weather = "http://api.openweathermap.org/data/2.5/weather?q=" + query_param + "&units=imperial&APPID=" + appID;
             var forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + query_param + "&units=imperial&APPID=" + appID;
@@ -49,28 +68,27 @@ $( document ).ready(function() {
         let citySearchObject = {
             city: query_param
         };
-        let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistroyArray"));
+        let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistoryArray"));
         // if(searchHistoryArray.includes(citySearchObject.query_param) === true){
         //     return;
         // } else 
-        if (searchHistoryArray === null){
+        
+        if(searchHistoryArray === null) {
             searchHistoryArray = [];
-            searchHistoryArray.push(citySearchObject);
+            searchHistoryArray.unshift(citySearchObject);
         } else {
-            searchHistoryArray.push(citySearchObject);
+            searchHistoryArray.unshift(citySearchObject);
         };
         localStorage.setItem("searchHistoryArray", JSON.stringify(searchHistoryArray));
         //Here I'll create the list of prior searches and make them clickable. 
         let searchLi = $("<li>");
         let liButton = $("<button>");
-        liButton.addClass("btn btn-default btn-sm");
+        liButton.addClass("query_btn btn btn-white btn-sm");
         liButton.attr("type", "button");
         liButton.text(query_param);
         searchLi.html(liButton);
         $("#searchHistoryList").prepend(searchLi);
     })
 
-
-
-    //Note to tomorrow-self: Next up is getting the search history list to populate as soon as the page is loaded.
+    
 });
