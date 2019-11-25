@@ -39,7 +39,15 @@
         <div class="row">
 
             <div class="col-lg-4 col-lg-offset-2 text-center border border-secondary">
-                <input type="text" placeholder="City"><button type="button" class="query_btn btn btn-default btn-sm">Search</button><br>
+                <form>
+                    <div class="form-group mt-2">
+                        <input type="text" placeholder="City">
+                        <button type="button" class="query_btn btn btn-primary btn-sm">Search</button>
+                    </div>
+                </form>
+                <br>
+                <h6>Recent Searches:</h6>
+                <ul id="searchHistoryList"></ul>
             </div>
         
             <div class="col-lg-8 col-lg-offset-2 text-left">
