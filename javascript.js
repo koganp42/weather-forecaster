@@ -20,11 +20,23 @@ $( document ).ready(function() {
         });
         $.getJSON(forecast,function(json){
             console.log(json);
-            //for (i = 0; i < 41; i + 8) {
-                $(".weather_image").attr("src", "http://openweathermap.org/img/w/" + json.list[0].weather[0].icon + ".png");
-                $(".temperature").html(json.list[0].main.temp + "&#176F");
-                $(".humidity").html(json.list[0].main.humidity + "%");
-            //}
+            for (i = 0; i < json.list.length; i + 8) {
+                //if statement and indexOf are supposed to be key here according to stephen
+                //Maybe instead try creating the cards as I loop the index
+                // $(".weather_image").attr("src", "http://openweathermap.org/img/w/" + json.list[i].weather[0].icon + ".png");
+                // $(".temperature").html(json.list[i].main.temp + "&#176F");
+                // $(".humidity").html(json.list[i].main.humidity + "%");
+                let cardTemplate = 
+                `<div class="card">
+                    <div class="card-body bg-primary text-white">
+                        <h5 class="card-title forecastDate">${json.list[i].main.date}</h5>
+                        <img class="weather_image" src="http://openweathermap.org/img/w/${json.list[i].weather[0].icon}.png" alt="Current Weather Image">
+                        <p class="temperature">${json.list[i].main.temp}&#176F</p>
+                        <p class="humidity">${json.list[i].main.humidity}%</p>
+                    </div>
+                </div>`
+                $("#forecastDiv").append(cardTemplate);
+            }
         });
     })
 
