@@ -1,27 +1,5 @@
 $( document ).ready(function() {
-    //saving my api key to a variable
-    let appID = "94bd8525986db57aa34cbcb264fb52c9";
-
-    //creating a function that will create a button li for each object in the stored array.
-
-    function searchHistoryButtonCreator(){
-        let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistoryArray"));
-        debugger;
-        for(i = 0; i < searchHistoryArray.length; i++){
-            let searchLi = $("<li>");
-            let liButton = $("<button>");
-            liButton.addClass("query_btn btn btn-white btn-sm");
-            liButton.attr("type", "button");
-            liButton.text(searchHistoryArray[i].query_param.city);
-            searchLi.html(liButton);
-            $("#searchHistoryList").prepend(searchLi);
-        }
-    }
-
-    // //calling the function above.
-    searchHistoryButtonCreator();
-    
-    
+     console.log(localStorage);
     $(".query_btn").click(function(){
         event.preventDefault();
         
@@ -75,7 +53,7 @@ $( document ).ready(function() {
         
         if(searchHistoryArray === null) {
             searchHistoryArray = [];
-            searchHistoryArray.unshift(citySearchObject);
+            searchHistoryArray.push(citySearchObject);
         } else {
             searchHistoryArray.unshift(citySearchObject);
         };
@@ -90,5 +68,26 @@ $( document ).ready(function() {
         $("#searchHistoryList").prepend(searchLi);
     })
 
+    //saving my api key to a variable
+    let appID = "94bd8525986db57aa34cbcb264fb52c9";
+
+    //creating a function that will create a button li for each object in the stored array.
+
+    function searchHistoryButtonCreator(){
+        let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistoryArray"));
+        debugger;
+        for(i = 0; i < searchHistoryArray.length; i++){
+            let searchLi = $("<li>");
+            let liButton = $("<button>");
+            liButton.addClass("query_btn btn btn-white btn-sm");
+            liButton.attr("type", "button");
+            liButton.text(searchHistoryArray[i].city);
+            searchLi.html(liButton);
+            $("#searchHistoryList").prepend(searchLi);
+        }
+    }
+
+    // //calling the function above.
+    searchHistoryButtonCreator();
     
 });
