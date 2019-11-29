@@ -23,18 +23,14 @@ $( document ).ready(function() {
             debugger;
             for(i = 0; i < json.list.length; i++){
                 if(json.list[i].dt_txt.indexOf("00:00:00") !== -1) {
-                //if statement and indexOf are supposed to be key here according to stephen
-                //Maybe instead try creating the cards as I loop the index
-                // $(".weather_image").attr("src", "http://openweathermap.org/img/w/" + json.list[0].weather[0].icon + ".png");
-                // $(".temperature").html(json.list[0].main.temp + "&#176F");
-                // $(".humidity").html(json.list[0].main.humidity + "%");
-
+                
+                let dateDisplayVal = json.list[i].dt_txt.slice(0, 10);
                 //Here I'm trying to use template literals to create a card for each data point I want and append those cards to my forecastDiv.
                 //Could use .split
                     let cardTemplate = 
                     `<div class="card">
-                        <div class="card-body bg-primary text-white">
-                            <h5 class="card-title forecastDate">${json.list[i].dt_txt}</h5>
+                        <div class="card-body text-black card-special bg-info">
+                            <h5 class="card-title forecastDate">${dateDisplayVal}</h5>
                             <img class="weather_image" src="http://openweathermap.org/img/w/${json.list[i].weather[0].icon}.png" alt="Current Weather Image">
                             <p class="temperature">${json.list[i].main.temp}&#176F</p>
                             <p class="humidity">${json.list[i].main.humidity}%</p>
