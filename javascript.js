@@ -48,15 +48,21 @@ $( document ).ready(function() {
         // if(searchHistoryArray.includes(citySearchObject.query_param) === true){
         //     return;
         // } else 
-        
+        console.log(searchHistoryArray);
+        debugger;
         if(searchHistoryArray === null) {
             searchHistoryArray = [];
             searchHistoryArray.push(citySearchObject);
+        } else if(searchHistoryArray.length === 5) {
+            searchHistoryArray.pop();
+            $("#searchHistoryList").empty();
+            searchHistoryButtonCreator();
+            searchHistoryArray.unshift(citySearchObject);
         } else {
             searchHistoryArray.unshift(citySearchObject);
         };
         localStorage.setItem("searchHistoryArray", JSON.stringify(searchHistoryArray));
-        //Here I'll create the list of prior searches and make them clickable. 
+        //The clickable list of prior searches. 
         let searchLi = $("<li>");
         let liButton = $("<button>");
         liButton.addClass("query_btn btn btn-white btn-sm");
@@ -78,7 +84,7 @@ $( document ).ready(function() {
             liButton.addClass("query_btn btn btn-white btn-sm");
             liButton.text(searchHistoryArray[i].city);
             searchLi.html(liButton);
-            $("#searchHistoryList").prepend(searchLi);
+            $("#searchHistoryList").append(searchLi);
         }
     }
 
