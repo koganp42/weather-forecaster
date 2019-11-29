@@ -2,6 +2,7 @@ $( document ).ready(function() {
      console.log(localStorage);
     $(".query_btn").click(function(){
         event.preventDefault();
+        $("#forecastDiv").empty();
         //saving my api key to a variable
         let appID = "94bd8525986db57aa34cbcb264fb52c9";
         let query_param = $(this).prev().val();
@@ -20,13 +21,11 @@ $( document ).ready(function() {
         });
         $.getJSON(forecast,function(json){
             console.log(json);
-            debugger;
             for(i = 0; i < json.list.length; i++){
-                if(json.list[i].dt_txt.indexOf("00:00:00") !== -1) {
                 
+                if(json.list[i].dt_txt.indexOf("15:00:00") !== -1) {
                 let dateDisplayVal = json.list[i].dt_txt.slice(0, 10);
                 //Here I'm trying to use template literals to create a card for each data point I want and append those cards to my forecastDiv.
-                //Could use .split
                     let cardTemplate = 
                     `<div class="card">
                         <div class="card-body text-black card-special bg-info">
@@ -68,7 +67,7 @@ $( document ).ready(function() {
     })
 
 
-    //creating a function that will create a button li for each object in the stored array.
+    //Function that creates a button li for each object in the stored array.
 
     function searchHistoryButtonCreator(){
         let searchHistoryArray = JSON.parse(localStorage.getItem("searchHistoryArray"));
@@ -85,5 +84,13 @@ $( document ).ready(function() {
 
     // //calling the function above.
     searchHistoryButtonCreator();
+
     
 });
+
+//What's left to do :
+//1. Make the search history buttons perform the same search when clicked.
+//1a. Possibly re-arrange the list so that the button clicked will move to the first position.
+
+//2. Have the search bar delete the fifth li when a new one is created. 
+//2a. Ensure a new button isn't created if the same value is entered in the search bar.
