@@ -13,3 +13,7 @@ ul {
     background: rgba(200, 226, 253, 0.7);
     color: #003636;
 }
+
+.card-special {
+    background: rgba(200, 226, 253, 0.0);
+}

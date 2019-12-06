@@ -87,6 +87,9 @@ $( document ).ready(function() {
     }
     // //calling the function above.
     searchHistoryButtonCreator();
+
+
+    //Essentially the same function as the original, altered to work for the search history buttons.
     $(".query_btn_list").click(function(){
         event.preventDefault();
         $("#forecastDiv").empty();
