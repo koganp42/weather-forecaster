@@ -161,8 +161,3 @@ $( document ).ready(function() {
         $("#emptyLi").prepend(searchLi);
     })
 });
-
-//What's left to do :
-//1. Make the search history buttons perform the same search when clicked.
-//1a. Possibly re-arrange the list so that the button clicked will move to the first position.
-//2. Ensure a new button isn't created if the same value is entered in the search bar.
