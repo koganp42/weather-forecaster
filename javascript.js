@@ -47,7 +47,6 @@ $( document ).ready(function() {
         //     return;
         // } else 
         console.log(searchHistoryArray);
-        debugger;
         if(searchHistoryArray === null) {
             searchHistoryArray = [];
             searchHistoryArray.push(citySearchObject);
