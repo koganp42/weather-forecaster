@@ -14,7 +14,7 @@ $( document ).ready(function() {
         $.getJSON(weather,function(json){
             console.log(json);
             $("#city").html(json.name);
-            $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+            $("#weather_image").attr("src", "https://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
             $("#temperature").html(json.main.temp + "&#176F");
             $("#humidity").html(json.main.humidity + "%");
             $("#wind_speed").html(json.wind.speed + " MPH");
@@ -104,7 +104,7 @@ $( document ).ready(function() {
         $.getJSON(weather,function(json){
             console.log(json);
             $("#city").html(json.name);
-            $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+            $("#weather_image").attr("src", "https://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
             $("#temperature").html(json.main.temp + "&#176F");
             $("#humidity").html(json.main.humidity + "%");
             $("#wind_speed").html(json.wind.speed + " MPH");
@@ -120,7 +120,7 @@ $( document ).ready(function() {
                     `<div class="card">
                         <div class="card-body text-black card-special bg-info">
                             <h5 class="card-title forecastDate">${dateDisplayVal}</h5>
-                            <img class="weather_image" src="http://openweathermap.org/img/w/${json.list[i].weather[0].icon}.png" alt="Current Weather Image">
+                            <img class="weather_image" src="https://openweathermap.org/img/w/${json.list[i].weather[0].icon}.png" alt="Current Weather Image">
                             <p class="temperature">${json.list[i].main.temp}&#176F</p>
                             <p class="humidity">${json.list[i].main.humidity}%</p>
                         </div>
