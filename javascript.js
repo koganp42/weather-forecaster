@@ -97,8 +97,8 @@ $( document ).ready(function() {
         let appID = "94bd8525986db57aa34cbcb264fb52c9";
         let query_param = $(this).text();
         //
-            var weather = "http://api.openweathermap.org/data/2.5/weather?q=" + query_param + "&units=imperial&APPID=" + appID;
-            var forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + query_param + "&units=imperial&APPID=" + appID;
+            var weather = "https://api.openweathermap.org/data/2.5/weather?q=" + query_param + "&units=imperial&APPID=" + appID;
+            var forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + query_param + "&units=imperial&APPID=" + appID;
         //}
     
         $.getJSON(weather,function(json){
